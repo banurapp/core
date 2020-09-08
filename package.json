@@ -6,5 +6,14 @@
   "repository": "https://github.com/banurapp/core.git",
   "author": "Rishi Kothari <itsrishikothari@gmail.com>",
   "license": "MPL-2.0",
-  "private": false
+  "private": false,
+  "dependencies": {
+    "apollo-server": "^2.17.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "graphql": "^15.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
 }
