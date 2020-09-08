@@ -1,0 +1,10 @@
+{
+  "name": "@banur/core",
+  "version": "0.0.1",
+  "description": "Core banur infrastructure for setting up a network.",
+  "main": "src/index.ts",
+  "repository": "https://github.com/banurapp/core.git",
+  "author": "Rishi Kothari <itsrishikothari@gmail.com>",
+  "license": "MPL-2.0",
+  "private": false
+}
