@@ -32,9 +32,8 @@ const books = [
 const resolvers = {
     Query: {
         books: () => books,
-        book: (...args) => {
-            console.log(args)
-            return books[0]
+        book: (_, { id }) => {
+            return books[id]
         }
     }
 }
