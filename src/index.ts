@@ -1,49 +1,23 @@
-import { ApolloServer, gql } from "apollo-server";
+import "reflect-metadata";
+import { createConnection } from "typeorm";
+import { ApolloServer } from "apollo-server";
+import { BookResolver } from './resolvers/Books';
+import { buildSchema } from "type-graphql";
 
-const typeDefs = gql`
-  type Book {
-    title: String
-    author: String
-  }
 
-  type Author {
-      name: String
-      books: [Book]
-  }
+(async () => {
+    const connection = createConnection()
+    const schema = await buildSchema({
+        resolvers: [
+            BookResolver
+        ]
+    })
 
-  type Query {
-    books: [Book]
-    book(id: ID!): Book
-    authors: [Author]
-  }
+    const server = new ApolloServer({
+        schema
+    })
 
-  type Mutation {
-      addBook(title: String, author: String): Book
-  }
-`;
+    await server.listen(process.env.PORT || 3639)
 
-const books = [
-    {
-        title: "Awef",
-        author: "awef"
-    }
-]
-
-const resolvers = {
-    Query: {
-        books: () => books,
-        book: (_, { id }) => {
-            return books[id]
-        }
-    }
-}
-
-const server = new ApolloServer({
-    resolvers,
-    typeDefs
-})
-
-server.listen().then(({ url }) => {
-    console.log("listening!")
-    console.log("see", url)
-})
+    console.log("Server has started!")
+})()
