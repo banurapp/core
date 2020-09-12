@@ -1,11 +1,11 @@
-import { registerEnumType } from "type-graphql";
+import { registerEnumType } from 'type-graphql'
 
 export enum ChannelType {
-    Private = "private",
-    Public = "public",
+	Private = 'private',
+	Public = 'public',
 }
 
 registerEnumType(ChannelType, {
-    name: "ChannelType",
-    description: "Describes a channel type."
+	name: 'ChannelType',
+	description: 'Describes a channel type.',
 })
