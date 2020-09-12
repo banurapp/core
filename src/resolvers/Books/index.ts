@@ -1,5 +1,5 @@
-import { Book } from './../../models/Book'
 import { Resolver, Query, Mutation, Arg } from 'type-graphql'
+import { Book } from '../../models/Book'
 import { CreateBookInput } from './inputs/createBookInput'
 import { UpdateBookInput } from './inputs/updateBookInput'
 

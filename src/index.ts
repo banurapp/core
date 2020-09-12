@@ -1,9 +1,12 @@
 import 'reflect-metadata'
 import { createConnection } from 'typeorm'
 import { ApolloServer } from 'apollo-server'
-import { BookResolver } from './resolvers/Books'
 import { buildSchema } from 'type-graphql'
-;(async () => {
+import { BookResolver } from './resolvers/Books'
+
+;
+
+(async () => {
 	const connection = createConnection({
 		type: 'postgres',
 		host: 'localhost',
