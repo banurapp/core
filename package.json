@@ -32,6 +32,13 @@
 		"eslint-config-airbnb": "^18.2.0",
 		"eslint-config-prettier": "^6.11.0",
 		"eslint-config-wesbos": "^1.0.0",
+		"eslint-plugin-html": "^6.1.0",
+		"eslint-plugin-import": "2.20.0",
+		"eslint-plugin-jsx-a11y": "6.2.3",
+		"eslint-plugin-prettier": "^3.1.4",
+		"eslint-plugin-react": "7.18.0",
+		"eslint-plugin-react-hooks": "1.7.0",
+		"husky": "^4.3.0",
 		"nodemon": "^2.0.4",
 		"prettier": "^2.1.1",
 		"prettier-eslint": "^11.0.0"
@@ -40,7 +47,14 @@
 		"dev": "nodemon src/index.ts",
 		"format": "prettier --single-quote --write 'src/**/*'",
 		"format:check": "prettier --single-quote --check 'src/**/*'",
-		"lint": "eslint \"src/**/*.{js,ts,tsx}\" --quiet --fix ",
-		"lint:workflow": "eslint \"src/**/*.{js,ts,tsx}\" --quiet"
+		"lint": "eslint \"src/**/*.{js,ts}\" --quiet --fix",
+		"lint:check": "eslint \"src/**/*.{js,ts}\" --quiet",
+		"check": "yarn run format:check && yarn run lint:check",
+		"check:fix": "yarn run format && yarn run lint"
+	},
+	"husky": {
+		"hooks": {
+			"pre-push": "yarn lint:check && yarn format:check"
+		}
 	}
 }
