@@ -3,10 +3,7 @@ import { createConnection } from 'typeorm'
 import { ApolloServer } from 'apollo-server'
 import { buildSchema } from 'type-graphql'
 import { BookResolver } from './resolvers/Books'
-
-;
-
-(async () => {
+;(async () => {
 	const connection = createConnection({
 		type: 'postgres',
 		host: 'localhost',
