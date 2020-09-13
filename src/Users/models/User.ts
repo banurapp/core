@@ -40,11 +40,16 @@ export class User extends BaseEntity {
 	@Column()
 	birthday: string
 
-	// TODO: Encrypt this column | priority ULTRA
 	@Field(() => String)
 	@Column()
-	password: string
+	passwordHash: string
 
 	// TODO: Authorization & Roles
 	// @Field(() => )
+
+	// TODO: Community connections
+
+	// TODO: Channel connections
+
+	//
 }
