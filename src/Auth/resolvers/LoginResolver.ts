@@ -1,6 +1,5 @@
 import { Resolver, Mutation, Arg, Ctx } from 'type-graphql'
-import { compare } from 'bcrypt'
-import * as bcrypt from 'bcrypt'
+import { compare, hash } from 'bcrypt'
 import { Context } from '../../types/context/index'
 import { User } from '../../Users/models/User'
 import { LoginInput } from '../inputs/LoginInput'
@@ -21,7 +20,7 @@ export class LoginResolver {
 			if (!user) return null
 
 			const valid = await compare(
-				await bcrypt.hash(password, environment.saltNum),
+				await hash(password, environment.saltNum),
 				user.passwordHash
 			)
 
