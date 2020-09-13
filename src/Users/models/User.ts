@@ -18,6 +18,22 @@ export class User extends BaseEntity {
 
 	@Field(() => String)
 	@Column()
+	firstName: string
+
+	@Field(() => String)
+	@Column()
+	lastName: string
+
+	@Field(() => String)
+	name: string
+	// TODO: Parent FieldResolver
+
+	@Field(() => String)
+	@Column()
+	avatar: string
+
+	@Field(() => String)
+	@Column({ unique: true })
 	email: string
 
 	@Field(() => String)
