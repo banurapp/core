@@ -2,7 +2,6 @@ import 'reflect-metadata'
 import { createConnection } from 'typeorm'
 import { ApolloServer } from 'apollo-server'
 import { buildSchema } from 'type-graphql'
-import { BookResolver } from './resolvers/Books'
 ;(async () => {
 	const connection = createConnection({
 		type: 'postgres',
@@ -19,15 +18,17 @@ import { BookResolver } from './resolvers/Books'
 			'./**/models/**/*.ts',
 		],
 	})
-	const schema = await buildSchema({
-		resolvers: [BookResolver],
-	})
 
-	const server = new ApolloServer({
-		schema,
-	})
+	// TODO: Create createServer function after base resolvers are complete
+	// const schema = await buildSchema({
+	// 	resolvers: [],
+	// })
 
-	await server.listen(process.env.PORT || 3639)
+	// const server = new ApolloServer({
+	// 	schema,
+	// })
+
+	// await server.listen(process.env.PORT || 3639)
 
 	console.log('Server has started!')
 })()
