@@ -1,15 +1,17 @@
 import { Resolver, Mutation, Arg, Ctx } from 'type-graphql'
 import { compare } from 'bcrypt'
+import * as bcrypt from 'bcrypt'
 import { Context } from '../../types/context/index'
 import { User } from '../../Users/models/User'
 import { LoginInput } from '../inputs/LoginInput'
+import { environment } from '../../environment/index'
 
 @Resolver()
 export class LoginResolver {
 	@Mutation(() => User, { nullable: true })
 	async login(
 		@Arg('user') { email, password }: LoginInput,
-		@Ctx() ctx: any
+		@Ctx() ctx: Context
 	): Promise<User | null> {
 		if (!email) throw Error('No email or username was provided.')
 
@@ -18,11 +20,14 @@ export class LoginResolver {
 
 			if (!user) return null
 
-			const valid = await compare(password, user.password)
+			const valid = await compare(
+				await bcrypt.hash(password, environment.saltNum),
+				user.passwordHash
+			)
 
 			if (!valid) return null
 
-			ctx.req.session.userId = user.id
+			ctx.user = user
 
 			return user
 		}
