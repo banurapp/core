@@ -4,6 +4,7 @@ import {
 	PrimaryGeneratedColumn,
 	ManyToMany,
 	JoinTable,
+	Column,
 } from 'typeorm'
 import { ObjectType, Field, ID } from 'type-graphql'
 import { ChannelType } from './ChannelType'
@@ -16,16 +17,25 @@ export class Channel extends BaseEntity {
 	id: string
 
 	@Field(() => String)
+	@Column()
 	name: string
 
 	@Field(() => ChannelType)
+	@Column()
 	type: ChannelType
 
-	@ManyToMany(() => Community)
-	@JoinTable({
-		name: '',
-	})
-	communities: Community[]
+	@Field(() => String)
+	@Column()
+	topic: string
+
+	@Field(() => String)
+	@Column()
+	description: string
+
+	// @JoinTable({
+	// 	name: '',
+	// })
+	// communities: Community[]
 
 	/*
     TODO:
