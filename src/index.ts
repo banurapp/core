@@ -19,7 +19,7 @@ import { buildSchema } from 'type-graphql'
 		],
 	})
 
-	// TODO: Create createServer function after base resolvers are complete
+	// // TODO: Create createServer function after base resolvers are complete
 	// const schema = await buildSchema({
 	// 	resolvers: [],
 	// })
